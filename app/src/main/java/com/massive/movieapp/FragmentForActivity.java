@@ -12,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.massive.movieapp.model.Movie;
+import com.massive.movieapp.utils.NetworkUtils;
 
 import java.util.ArrayList;
 
@@ -22,12 +24,11 @@ public class FragmentForActivity extends Fragment implements ICallBack {
     public BaseAdapterMovie MyAdapter;
     public ArrayList<Movie> movieArrayList;
     public GridView mGridView;
-
     public static String BASE_URL = "https://api.themoviedb.org/3/";
-
     public String MovieUrl = BASE_URL + "discover/movie?";
     public String MoviePopularUrl = BASE_URL + "movie/popular?";
     public String MovieTopRatedUrl = BASE_URL + "movie/top_rated?";
+
 
     public void movieMethod() {
         if (movieArrayList != null) {
@@ -35,7 +36,6 @@ public class FragmentForActivity extends Fragment implements ICallBack {
             mGridView.setAdapter(MyAdapter);
         }
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +44,15 @@ public class FragmentForActivity extends Fragment implements ICallBack {
     }
 
     private void CallNetwork(String baseUrl) {
-        new Url_cont(this, getActivity()).execute(baseUrl);
+        if (NetworkUtils.isNetworkAvailable(getActivity())) {
+            new Url_cont(this, getActivity()).execute(baseUrl);
+        } else {
+            CharSequence text = "check your internet connection!";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(getActivity(), text, duration);
+            toast.show();
+        }
+
     }
 
     @Override
@@ -76,6 +84,7 @@ public class FragmentForActivity extends Fragment implements ICallBack {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_grid, null, false);
         mGridView = (GridView) viewRoot.findViewById(R.id.gridInFragement);
+
         movieMethod();
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -91,12 +100,10 @@ public class FragmentForActivity extends Fragment implements ICallBack {
         return viewRoot;
     }
 
-
     @Override
     public void onPostExcuteCallBack(ArrayList<Movie> movieArrayList) {
         this.movieArrayList = movieArrayList;
-        MyAdapter = new BaseAdapterMovie(movieArrayList, getActivity());
-        mGridView.setAdapter(MyAdapter);
+        movieMethod();
     }
 
 

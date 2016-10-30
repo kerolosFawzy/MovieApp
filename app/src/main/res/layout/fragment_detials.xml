@@ -1,119 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#37474f"
-    android:id="@+id/contanierdetial">
+    android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="155dp"
-        android:scaleType="centerInside"
-        android:id="@+id/detialImgview"
-        android:layout_weight="0.21" />
-
-    <TextView
-        android:text="Original Title "
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/contanierdetial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/original_title_tv"
-        android:layout_weight="0.07"
-        android:background="#000000"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@android:color/background_light"
-        android:gravity="left|center"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp" />
+        android:background="#37474f"
+        android:orientation="vertical">
 
-    <TextView
-        android:text="Release Data :"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ReleaseData"
-        android:background="#6a0808"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@android:color/background_light"
-        android:gravity="left|center"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
+        <com.massive.movieapp.SquareImageView
+            android:id="@+id/detialImgview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.21"
+            android:scaleType="centerInside" />
 
-    <TextView
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ReleaseDataView"
-        android:background="#b93131"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@android:color/background_light"
-        android:gravity="left|center"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:elevation="0dp" />
+        <TextView
+            android:id="@+id/original_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.06"
+            android:background="#000000"
+            android:gravity="left|center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Original Title "
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:text="Description:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/OverView"
-        android:background="#6a0808"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@android:color/background_light"
-        android:gravity="left|center"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/ReleaseData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6a0808"
+            android:gravity="left|center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Release Data :"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/OverViewShow"
-        android:background="#b93131"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@android:color/background_light"
-        android:gravity="left|center"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
-    <TextView
-        android:text="Rating for the movie:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rat"
-        android:background="#6a0808"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@android:color/background_light"
-        android:gravity="left|center"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/ReleaseDataView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#b93131"
+            android:elevation="0dp"
+            android:gravity="left|center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text=""
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:numStars="5"
-        android:foregroundGravity="center_horizontal"
-        android:id="@+id/ratingBar"
-        android:isIndicator="true"
-        android:clickable="false"
-        android:focusableInTouchMode="false"
-        android:focusable="false" />
+        <TextView
+            android:id="@+id/OverView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6a0808"
+            android:gravity="left|center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Description:"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/OverViewShow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#b93131"
+            android:gravity="left|center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text=""
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6a0808"
+            android:gravity="left|center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Rating for the movie:"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:foregroundGravity="center_horizontal"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize=".5" />
 
 
-</LinearLayout></ScrollView>
+    </LinearLayout>
+</ScrollView>

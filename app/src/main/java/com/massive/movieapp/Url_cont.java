@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
-public class Url_cont extends AsyncTask<String, Object, ArrayList<Movie>>  {
+public class Url_cont extends AsyncTask<String, Object, ArrayList<Movie>> {
 
     final String log_tag = Url_cont.class.getSimpleName();
     ArrayList<Movie> resultObj = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Url_cont extends AsyncTask<String, Object, ArrayList<Movie>>  {
     private Context mContext;
     ProgressDialog progressDialog;
 
-    public Url_cont( ICallBack NetworkCallBack, Context mContext) {
+    public Url_cont(ICallBack NetworkCallBack, Context mContext) {
         myCallBack = NetworkCallBack;
         this.mContext = mContext;
     }
@@ -37,10 +37,10 @@ public class Url_cont extends AsyncTask<String, Object, ArrayList<Movie>>  {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+            progressDialog = new ProgressDialog(mContext);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.show();
 
-        progressDialog = new ProgressDialog(mContext);
-        progressDialog.setMessage("Please wait...");
-        progressDialog.show();
     }
 
     private ArrayList<Movie> formatMyJson(String jsonstr) throws JSONException {
@@ -52,7 +52,6 @@ public class Url_cont extends AsyncTask<String, Object, ArrayList<Movie>>  {
         for (int i = 0; i < mylist.length(); i++) {
             mMovie = new Movie();
             JSONObject mynewob = mylist.getJSONObject(i);
-
             mMovie.setVote(mynewob.getString("vote_average"));
             mMovie.setTitle(mynewob.getString("original_title"));
             mMovie.setPoster_image(mynewob.getString("poster_path"));
@@ -66,59 +65,55 @@ public class Url_cont extends AsyncTask<String, Object, ArrayList<Movie>>  {
     @Override
     protected ArrayList<Movie> doInBackground(String... params) {
 
-        HttpURLConnection httpURLConnection = null;
-        BufferedReader reader = null;
-        String jsonstr = null;
-        try {
-            Uri builtUri = Uri.parse(params[0]).buildUpon().appendQueryParameter("api_key", BuildConfig.APIKRY).build();
-            Log.i("url_site" , builtUri.toString());
-            URL uRl = new URL(builtUri.toString());
-            httpURLConnection = (HttpURLConnection) uRl.openConnection();
-            httpURLConnection.connect();
+            HttpURLConnection httpURLConnection = null;
+            BufferedReader reader = null;
+            String jsonstr = null;
+            try {
+                Uri builtUri = Uri.parse(params[0]).buildUpon().appendQueryParameter("api_key", BuildConfig.APIKRY).build();
+                Log.i("url_site", builtUri.toString());
+                URL uRl = new URL(builtUri.toString());
+                httpURLConnection = (HttpURLConnection) uRl.openConnection();
+                httpURLConnection.connect();
 
-            int responseCode = httpURLConnection.getResponseCode();
-            Log.i("ResponseCode", String.valueOf(responseCode));
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(httpURLConnection.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
+                int responseCode = httpURLConnection.getResponseCode();
+                Log.i("ResponseCode", String.valueOf(responseCode));
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(httpURLConnection.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
 
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
 
-            jsonstr = response.toString();
+                jsonstr = response.toString();
 
-        } catch (Exception e) {
-            Log.e(log_tag, "this url has a problem 111");
-        } finally {
-            if (httpURLConnection != null) {
-                httpURLConnection.disconnect();
-            }
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            } catch (Exception e) {
+                Log.e(log_tag, "this url has a problem 111");
+            } finally {
+                if (httpURLConnection != null) {
+                    httpURLConnection.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        }
-        try {
-            return formatMyJson(jsonstr);
-        } catch (Exception e) {
-            Log.i(log_tag, "not thing work at alllllll");
-        }
+            try {
+                return formatMyJson(jsonstr);
+            } catch (Exception e) {
+                Log.i(log_tag, "not thing work at alllllll");
+            }
         return null;
     }
-
     @Override
     protected void onPostExecute(ArrayList<Movie> strings) {
         progressDialog.dismiss();
         myCallBack.onPostExcuteCallBack(strings);
-
     }
-
-
 
 }

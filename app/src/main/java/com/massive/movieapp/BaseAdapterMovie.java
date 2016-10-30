@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 
 import com.massive.movieapp.model.Movie;
 import com.squareup.picasso.Picasso;
@@ -59,9 +58,9 @@ public class BaseAdapterMovie extends BaseAdapter {
 
     public class ViewHolder {
 
-        protected ImageView ivMoviePoster;
+        protected SquareImageView ivMoviePoster;
         public ViewHolder(View view) {
-            ivMoviePoster = (ImageView) view.findViewById(R.id.ivMoviePoster);
+            ivMoviePoster = (SquareImageView) view.findViewById(R.id.ivMoviePoster);
         }
     }
 
