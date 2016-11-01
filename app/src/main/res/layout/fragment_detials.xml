@@ -12,23 +12,23 @@
         android:background="#37474f"
         android:orientation="vertical">
 
-        <com.massive.movieapp.SquareImageView
+        <ImageView
             android:id="@+id/detialImgview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.21"
-            android:scaleType="centerInside" />
+            android:layout_height="244dp"
+            android:scaleType="fitCenter"
+            />
 
         <TextView
             android:id="@+id/original_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.06"
+            android:layout_weight="0.01"
             android:background="#000000"
             android:gravity="left|center"
-            android:paddingBottom="10dp"
+            android:paddingBottom="5dp"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"
+            android:paddingTop="5dp"
             android:text="Original Title "
             android:textColor="@android:color/background_light"
             android:textSize="18sp"

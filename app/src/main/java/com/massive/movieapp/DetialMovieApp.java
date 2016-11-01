@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ public class DetialMovieApp extends Fragment {
     Movie MyInfo;
     private TextView Title  , ovewView , relsedData;
     private RatingBar Rate;
-    SquareImageView imageView;
+    ImageView imageView;
 
     @Nullable
     @Override
@@ -27,7 +28,7 @@ public class DetialMovieApp extends Fragment {
         ovewView=(TextView) rootView.findViewById(R.id.OverViewShow);
         relsedData=(TextView) rootView.findViewById(R.id.ReleaseDataView);
         Rate=(RatingBar)rootView.findViewById(R.id.ratingBar);
-        imageView=(SquareImageView)rootView.findViewById(R.id.detialImgview);
+        imageView=(ImageView)rootView.findViewById(R.id.detialImgview);
         MyInfo = (Movie) getArguments().getSerializable(FragmentForActivity.MOVIE_KEY);
         if(null != MyInfo){
             Title.setText(MyInfo.getTitle());
