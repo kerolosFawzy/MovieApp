@@ -117,7 +117,5 @@
             android:isIndicator="true"
             android:numStars="5"
             android:stepSize=".5" />
-
-
     </LinearLayout>
 </ScrollView>
