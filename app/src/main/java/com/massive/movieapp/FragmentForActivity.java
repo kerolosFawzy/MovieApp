@@ -31,7 +31,7 @@ public class FragmentForActivity extends Fragment implements ICallBack {
 
 
     public void movieMethod() {
-        if (movieArrayList != null) {
+        if (movieArrayList != null && mGridView != null) {
             MyAdapter = new BaseAdapterMovie(movieArrayList, getActivity());
             mGridView.setAdapter(MyAdapter);
         }
@@ -78,6 +78,7 @@ public class FragmentForActivity extends Fragment implements ICallBack {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Nullable
     @Override
