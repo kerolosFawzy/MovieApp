@@ -7,5 +7,5 @@
     android:title="Sort By Rated"/>
 
     <item android:id="@+id/normal"
-        android:title="back to normal"/>
+        android:title="Most Recent"/>
 </menu>

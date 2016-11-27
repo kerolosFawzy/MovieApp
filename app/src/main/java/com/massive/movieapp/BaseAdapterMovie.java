@@ -1,27 +1,32 @@
 package com.massive.movieapp;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.massive.movieapp.model.Movie;
+import com.massive.movieapp.db.MovieDb;
+import com.massive.movieapp.utils.Constants;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 
 public class BaseAdapterMovie extends BaseAdapter {
-    ArrayList<Movie> movieArrayList;
-    Context context;
-    LayoutInflater Inflater;
+    private ArrayList<MovieDb> movieArrayList;
+    private Context mContext;
+    private LayoutInflater Inflater;
 
-
-    public BaseAdapterMovie(ArrayList<Movie> movieArrayList, Context context1) {
+    public BaseAdapterMovie(ArrayList<MovieDb> movieArrayList, Context context) {
         this.movieArrayList = movieArrayList;
-        context = context1;
+        this.mContext = context;
+        this.Inflater = LayoutInflater.from(context);
+
     }
 
     @Override
@@ -41,18 +46,27 @@ public class BaseAdapterMovie extends BaseAdapter {
 
     @Override
     public View getView(int position, View cameView, ViewGroup viewGroup) {
-
-        ViewHolder viewHolder;
-
+        final ViewHolder viewHolder;
         if (cameView == null) {
-            Inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             cameView = Inflater.inflate(R.layout.row, null);
             viewHolder = new ViewHolder(cameView);
             cameView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) cameView.getTag();
         }
-        Picasso.with(context).load("http://image.tmdb.org/t/p/w185"+ movieArrayList.get(position).getPoster_image()).into(viewHolder.ivMoviePoster);
+       final String url = Constants.PosterUrl + movieArrayList.get(position).getPoster_image();
+        Picasso.with(mContext).load(url)
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .into(viewHolder.ivMoviePoster, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.i("onSuccess","imag="+url+" loaded");
+                    }
+                    @Override
+                    public void onError() {
+                        Picasso.with(mContext).load(url).into(viewHolder.ivMoviePoster);
+                    }});
+        //Picasso.with(mContext).load(url).into(viewHolder.ivMoviePoster);
 
         return cameView;
     }
@@ -60,6 +74,7 @@ public class BaseAdapterMovie extends BaseAdapter {
     public class ViewHolder {
 
         protected ImageView ivMoviePoster;
+
         public ViewHolder(View view) {
             ivMoviePoster = (ImageView) view.findViewById(R.id.ivMoviePoster);
         }
@@ -67,4 +82,3 @@ public class BaseAdapterMovie extends BaseAdapter {
 
 
 }
-

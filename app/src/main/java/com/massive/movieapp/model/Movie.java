@@ -8,7 +8,22 @@ import java.io.Serializable;
 
 public class Movie implements Serializable {
 
-    private String Vote , overview , rate , poster_image , title , date;
+    private String Vote;
+    private String overview;
+    private String rate;
+    private String poster_image;
+    private String title;
+    private String date;
+    private String id;
+    private String backdrop;
+
+    public String getBackdrop() {
+        return backdrop;
+    }
+
+    public void setBackdrop(String backdrop) {
+        this.backdrop = backdrop;
+    }
 
     public String getVote() {
         return Vote;
@@ -56,5 +71,13 @@ public class Movie implements Serializable {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

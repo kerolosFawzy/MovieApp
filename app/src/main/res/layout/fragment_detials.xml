@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -16,8 +18,17 @@
             android:id="@+id/detialImgview"
             android:layout_width="match_parent"
             android:layout_height="244dp"
-            android:scaleType="fitCenter"
-            />
+            android:layout_weight="1"
+            android:scaleType="fitCenter" />
+
+        <Button
+            android:id="@+id/addToFavourite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:padding="5dp"
+            android:text="Add to Favourite" />
 
         <TextView
             android:id="@+id/original_title_tv"
@@ -88,6 +99,57 @@
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkRed"
+            android:gravity="left|center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Review:"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/ShowReview"
+            android:text="Click here to see film review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="left|center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/ic_play_arrow_black_24dp"
+                android:id="@+id/playMovie"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+               />
+
+            <com.pierfrancescosoffritti.youtubeplayer.YouTubePlayerView
+                android:id="@+id/youtube_player_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/rat"
