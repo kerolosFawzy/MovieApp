@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:text="Author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ReviewAuthor"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:padding="20dp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ReviewContan"
+        android:textSize="18sp"
+        android:textStyle="normal|bold|italic"/>
+</LinearLayout>

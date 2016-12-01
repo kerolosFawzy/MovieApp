@@ -7,7 +7,7 @@
     android:fillViewport="true"
     android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:id="@+id/contanierdetial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -128,29 +128,93 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:text="Trailers:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:background="@color/darkRed"
+            android:textSize="18sp"
+            android:textColor="@android:color/background_light" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="52dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/ic_play_arrow_black_24dp"
-                android:id="@+id/playMovie"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-               />
 
-            <com.pierfrancescosoffritti.youtubeplayer.YouTubePlayerView
-                android:id="@+id/youtube_player_view"
+            <Button
+                android:layout_width="59dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonShowView1"
+                android:onClick="buttonShowView_1"
+                android:background="@drawable/playbutton" />
+
+            <TextView
+                android:text="trailer 1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"
+                android:id="@+id/trailer1"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColorLink="@android:color/white"
+                android:textColor="@android:color/background_light"
+                android:gravity="center_vertical|center_horizontal"/>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:layout_width="59dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonShowView2"
+                android:onClick="ShowMovieVideo2"
+                android:background="@drawable/playbutton" />
+
+            <TextView
+                android:text="trailer 2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/trailer2"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColorLink="@android:color/white"
+                android:textColor="@android:color/background_light"
+                android:gravity="center_vertical|center_horizontal"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:layout_width="59dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonShowView3"
+                android:onClick="ShowMovieVideo3"
+                android:background="@drawable/playbutton" />
+
+            <TextView
+                android:text="trailer 3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/trailer3"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColorLink="@android:color/white"
+                android:textColor="@android:color/background_light"
+                android:gravity="center_vertical|center_horizontal"/>
+
+        </LinearLayout>
         <TextView
             android:id="@+id/rat"
             android:layout_width="match_parent"

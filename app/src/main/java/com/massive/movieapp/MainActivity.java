@@ -5,18 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    boolean mTwoPane = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getFragmentManager().beginTransaction().replace(R.id.Container, new FragmentForActivity()).commit();
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_main );
+        if (findViewById( R.id.details_frag ) != null) {
+            mTwoPane = true;
+        } else {
+            getFragmentManager().beginTransaction().replace( R.id.Container, new FragmentForActivity() ).commit();
+        }
     }
 
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-     //   onDestroyRealm();
+    public boolean CheckTwoPane() {
+        return mTwoPane;
     }
 }

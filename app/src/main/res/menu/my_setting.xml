@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/sortByPopular"
-    android:title="Sort By Popular"/>
+    <item android:id="@+id/sortByPopular"
+          android:title="Sort By Popular"/>
 
     <item android:id="@+id/sortByTopRated"
-    android:title="Sort By Rated"/>
+          android:title="Sort By Rated"/>
 
     <item android:id="@+id/normal"
-        android:title="Most Recent"/>
+          android:title="back to normal"/>
 </menu>

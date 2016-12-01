@@ -11,15 +11,15 @@ import io.realm.annotations.Required;
 public class MovieDb extends RealmObject implements Serializable{
 //// TODO: 26/11/2016 must make it take all data and store it
     @PrimaryKey
-    private String MovieID;
+    private String id;
     @Index
-    private String title;
+    private String original_title;
     @Required
-    private String Vote;
+    private String vote_count;
     private String overview;
-    private String rate;
-    private String poster_image;
-    private String date;
+    private String vote_average;
+    private String poster_path;
+    private String release_date;
     @Ignore
     private String backdrop_path;
 
@@ -31,12 +31,12 @@ public class MovieDb extends RealmObject implements Serializable{
         this.backdrop_path = backdrop_path;
     }
 
-    public String getVote() {
-        return Vote;
+    public String getVote_count() {
+        return vote_count;
     }
 
-    public void setVote(String vote) {
-        Vote = vote;
+    public void setVote_count(String vote_count) {
+        this.vote_count = vote_count;
     }
 
     public String getOverview() {
@@ -47,44 +47,44 @@ public class MovieDb extends RealmObject implements Serializable{
         this.overview = overview;
     }
 
-    public String getRate() {
-        return rate;
+    public String getVote_average() {
+        return vote_average;
     }
 
-    public void setRate(String rate) {
-        this.rate = rate;
+    public void setVote_average(String vote_average) {
+        this.vote_average = vote_average;
     }
 
-    public String getPoster_image() {
-        return poster_image;
+    public String getPoster_path() {
+        return poster_path;
     }
 
-    public void setPoster_image(String poster_image) {
-        this.poster_image = poster_image;
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
     }
 
-    public String getTitle() {
-        return title;
+    public String getOriginal_title() {
+        return original_title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
     }
 
-    public String getDate() {
-        return date;
+    public String getRelease_date() {
+        return release_date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
     }
 
-    public String getMovieID() {
-        return MovieID;
+    public String getId() {
+        return id;
     }
 
-    public void setMovieID(String movieID) {
-        MovieID = movieID;
+    public void setId(String id) {
+        this.id = id;
     }
 
 }
