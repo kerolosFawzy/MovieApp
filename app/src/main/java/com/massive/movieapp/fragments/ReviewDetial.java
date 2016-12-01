@@ -1,4 +1,4 @@
-package com.massive.movieapp;
+package com.massive.movieapp.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
+import com.massive.movieapp.ICallBack;
+import com.massive.movieapp.R;
 import com.massive.movieapp.model.Movie;
 import com.massive.movieapp.model.MovieReview;
 import com.massive.movieapp.webservices.WebServiceCall;
@@ -39,18 +41,19 @@ public class ReviewDetial extends Fragment implements ICallBack<MovieReview> {
         return fragment;
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated( savedInstanceState );
+    void callMyService() {
         MyInfo = (Movie) getArguments().getSerializable( MOVIE_kEY );
         String reviewUrl = "https://api.themoviedb.org/3/movie/" + MyInfo.getId() + "/reviews";
-        Type myType = new TypeToken<List<MovieReview>>() {}.getType();
-        new WebServiceCall<MovieReview>(this,getActivity(),myType).execute( reviewUrl );
+        Type myType = new TypeToken<List<MovieReview>>() {
+        }.getType();
+        new WebServiceCall<MovieReview>( this, getActivity(), myType ).execute( reviewUrl );
     }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        callMyService();
         //// TODO: 01/12/2016 fix my call back movieReviews is null case of not get WebServiceCall at right time
         View view = inflater.inflate( R.layout.review, container, false );
 

@@ -12,6 +12,7 @@
         android:src="@drawable/videoplayer"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
+        android:contentDescription="it is a poster image"
         android:id="@+id/ivMoviePoster"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -22,5 +23,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 </android.support.constraint.ConstraintLayout>

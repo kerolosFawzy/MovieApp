@@ -1,4 +1,4 @@
-package com.massive.movieapp;
+package com.massive.movieapp.fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -18,6 +18,10 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.google.gson.reflect.TypeToken;
+import com.massive.movieapp.BaseAdapterMovie;
+import com.massive.movieapp.ICallBack;
+import com.massive.movieapp.MainActivity;
+import com.massive.movieapp.R;
 import com.massive.movieapp.db.MovieDb;
 import com.massive.movieapp.db.RealmControllers;
 import com.massive.movieapp.model.Movie;

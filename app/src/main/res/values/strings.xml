@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Movie APP</string>
+    <string name="AddButton">Add to Favourite</string>
 </resources>

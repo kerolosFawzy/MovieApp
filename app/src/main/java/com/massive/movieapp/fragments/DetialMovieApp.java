@@ -1,4 +1,4 @@
-package com.massive.movieapp;
+package com.massive.movieapp.fragments;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.reflect.TypeToken;
+import com.massive.movieapp.ICallBack;
+import com.massive.movieapp.R;
 import com.massive.movieapp.model.Movie;
 import com.massive.movieapp.model.MovieTrailer;
 import com.massive.movieapp.utils.Constants;

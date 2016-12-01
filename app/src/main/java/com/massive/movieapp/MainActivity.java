@@ -3,6 +3,8 @@ package com.massive.movieapp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.massive.movieapp.fragments.FragmentForActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     boolean mTwoPane = false;
