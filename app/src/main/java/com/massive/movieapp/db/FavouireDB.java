@@ -8,8 +8,12 @@ import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class MovieDb extends RealmObject implements Serializable{
-//// TODO: 26/11/2016 must make it take all data and store it
+/**
+ * Created by Minafaw on 02/12/2016.
+ */
+
+public class FavouireDB extends RealmObject implements Serializable {
+
     @PrimaryKey
     private String id;
     @Index
@@ -86,5 +90,4 @@ public class MovieDb extends RealmObject implements Serializable{
     public void setId(String id) {
         this.id = id;
     }
-
 }

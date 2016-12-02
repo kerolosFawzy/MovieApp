@@ -10,9 +10,12 @@ public class myApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        RealmConfiguration configuration = new RealmConfiguration
-                .Builder(this).name("Movie_database.realm").build();
-        Realm.setDefaultConfiguration(configuration);
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
+                .name(Realm.DEFAULT_REALM_NAME)
+                .schemaVersion(0)
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
 
 //        OkHttpClient picassoClient = new OkHttpClient();
         //picassoClient.interceptors().add(new OAuth2Interceptor());

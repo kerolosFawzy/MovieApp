@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView( R.layout.activity_main );
         if (findViewById( R.id.details_frag ) != null) {
             mTwoPane = true;
-        } else {
-            getFragmentManager().beginTransaction().replace( R.id.Container, new FragmentForActivity() ).commit();
         }
+            getFragmentManager().beginTransaction().replace( R.id.Container, new FragmentForActivity() ).commit();
+
     }
 
     public boolean CheckTwoPane() {

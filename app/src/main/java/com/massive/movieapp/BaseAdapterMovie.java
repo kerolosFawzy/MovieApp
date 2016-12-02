@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.massive.movieapp.model.Movie;
 import com.massive.movieapp.utils.Constants;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class BaseAdapterMovie extends BaseAdapter {
     public BaseAdapterMovie(ArrayList<Movie> movieArrayList, Context context) {
         this.movieArrayList = movieArrayList;
         this.mContext = context;
-        this.Inflater = LayoutInflater.from( context );
+        //this.Inflater = LayoutInflater.from( context );
 
     }
 
@@ -45,20 +45,26 @@ public class BaseAdapterMovie extends BaseAdapter {
 
     @Override
     public View getView(int position, View cameView, ViewGroup viewGroup) {
-        final ViewHolder viewHolder;
+
+        ViewHolder viewHolder;
         if (cameView == null) {
+            Inflater = (LayoutInflater) mContext.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
             cameView = Inflater.inflate( R.layout.row, null );
             viewHolder = new ViewHolder( cameView );
             cameView.setTag( viewHolder );
         } else {
             viewHolder = (ViewHolder) cameView.getTag();
         }
-        Log.i("myArrayList21",String.valueOf( Constants.PosterUrl + movieArrayList.get( position ).getPoster_path() ));
-        Picasso.with( mContext ).load(Constants.PosterUrl + movieArrayList.get( position ).getPoster_path())
-                .networkPolicy( NetworkPolicy.OFFLINE )
+        Log.i( "myArrayList21", String.valueOf( Constants.PosterUrl + movieArrayList.get( position ).getPoster_path() ) );
+        // this library instead of picasso
+        Glide.with( mContext )
+                .load( Constants.PosterUrl + movieArrayList.get( position ).getPoster_path() )
+                .error( R.drawable.noimage )
+                .diskCacheStrategy( DiskCacheStrategy.ALL )
                 .into( viewHolder.ivMoviePoster );
         return cameView;
     }
+
 
     public class ViewHolder {
 
@@ -68,6 +74,6 @@ public class BaseAdapterMovie extends BaseAdapter {
             ivMoviePoster = (ImageView) view.findViewById( R.id.ivMoviePoster );
         }
     }
-
-
 }
+
+

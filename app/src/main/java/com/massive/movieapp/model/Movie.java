@@ -7,18 +7,14 @@ import java.io.Serializable;
 public class Movie implements Serializable {
 
     private String poster_path ;
-   // private boolean adult ;
     private String overview ;
     private String release_date ;
-   /// private int [] genre_ids;
-    private int id ;
+    private String id ;
     private String original_title ;
-  //  private String original_language ;
     private String title ;
     private String backdrop_path ;
     private double popularity ;
     private int vote_count ;
-    private boolean video ;
     private double vote_average ;
 
     public String getPoster_path() {
@@ -28,14 +24,6 @@ public class Movie implements Serializable {
     public void setPoster_path(String poster_path) {
         this.poster_path = poster_path;
     }
-
-//    public boolean isAdult() {
-//        return adult;
-//    }
-//
-//    public void setAdult(boolean adult) {
-//        this.adult = adult;
-//    }
 
     public String getOverview() {
         return overview;
@@ -53,19 +41,11 @@ public class Movie implements Serializable {
         this.release_date = release_date;
     }
 
-//    public int[] getGenre_ids() {
-//        return genre_ids;
-//    }
-//
-//    public void setGenre_ids(int[] genre_ids) {
-//        this.genre_ids = genre_ids;
-//    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -76,14 +56,6 @@ public class Movie implements Serializable {
     public void setOriginal_title(String original_title) {
         this.original_title = original_title;
     }
-
-//    public String getOriginal_language() {
-//        return original_language;
-//    }
-//
-//    public void setOriginal_language(String original_language) {
-//        this.original_language = original_language;
-//    }
 
     public String getTitle() {
         return title;
@@ -115,14 +87,6 @@ public class Movie implements Serializable {
 
     public void setVote_count(int vote_count) {
         this.vote_count = vote_count;
-    }
-
-    public boolean isVideo() {
-        return video;
-    }
-
-    public void setVideo(boolean video) {
-        this.video = video;
     }
 
     public double getVote_average() {

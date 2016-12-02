@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/layout"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="#87b0f2">
 
     <TextView
         android:text="Author"
@@ -11,13 +13,18 @@
         android:id="@+id/ReviewAuthor"
         android:textSize="24sp"
         android:textStyle="normal|bold"
-        android:padding="20dp"/>
-
+        android:padding="20dp"
+        android:textColor="@color/colorPrimary"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:text="TextView"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ReviewContan"
         android:textSize="18sp"
-        android:textStyle="normal|bold|italic"/>
+        android:textStyle="normal|bold|italic"
+        android:textColor="#EBF2FC"/></ScrollView>
 </LinearLayout>

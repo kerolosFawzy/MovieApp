@@ -61,8 +61,11 @@ public class RealmControllers {
         }
         return last;
     }
-    public void BuildRealm(){
+    public static FavouireDB checkId(String id) {
+
+        return realm.where(FavouireDB.class).equalTo("id", id).findFirst();
     }
+
     //to delete every thing from realm
     public void deleteAll() {
         realm.beginTransaction();
@@ -75,14 +78,18 @@ public class RealmControllers {
         return realm.where(MovieDb.class).findAll();
     }
 
-    //to et movie id if we need to use it
+    //to get movie id
     public MovieDb getMovieid(String name) {
         return realm.where(MovieDb.class).equalTo("id", name).findFirst();
     }
 
+    public  ArrayList<FavouireDB> getAllfavouitemovie(){
+        return new ArrayList<FavouireDB>( realm.where(FavouireDB.class).findAll() );
+    }
+
     //check if the realm is empty or not
-    public boolean hasData() {
-        return !realm.allObjects(MovieDb.class).isEmpty();
+    public static boolean hasData() {
+        return !realm.allObjects(FavouireDB.class).isEmpty();
     }
 
     public static void onDestroyRealm() {

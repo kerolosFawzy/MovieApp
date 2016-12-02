@@ -22,6 +22,7 @@ import com.massive.movieapp.BaseAdapterMovie;
 import com.massive.movieapp.ICallBack;
 import com.massive.movieapp.MainActivity;
 import com.massive.movieapp.R;
+import com.massive.movieapp.db.FavouireDB;
 import com.massive.movieapp.db.MovieDb;
 import com.massive.movieapp.db.RealmControllers;
 import com.massive.movieapp.model.Movie;
@@ -66,11 +67,11 @@ public class FragmentForActivity extends Fragment implements ICallBack<Movie> {
 
     private void CallNetwork(String baseUrl) {
         if (NetworkUtils.isNetworkAvailable( getActivity() )) {
-            Type type = new TypeToken<List<Movie>>() {}.getType();
+            Type type = new TypeToken<List<Movie>>() {
+            }.getType();
             new WebServiceCall<Movie>( this, getActivity(), type ).execute( baseUrl );
         } else {
-            getAllMovies();
-            // showErrormessage();
+            showErrormessage();
         }
     }
 
@@ -118,6 +119,32 @@ public class FragmentForActivity extends Fragment implements ICallBack<Movie> {
             case R.id.normal:
                 CallNetwork( Constants.MovieUrl );
                 break;
+            case R.id.Favourite: {
+                realm = RealmControllers.with( getActivity() ).getRealm();
+                if (RealmControllers.hasData()) {
+
+                    movieArrayList = new ArrayList<>(  );
+                    realm.beginTransaction();
+
+                    ArrayList<FavouireDB> favouriteList = RealmControllers.with( getActivity() ).getAllfavouitemovie();
+                    for (FavouireDB db : favouriteList) {
+                        Movie movie = new Movie();
+                        movie.setId( db.getId() );
+                        movie.setTitle( db.getOriginal_title() );
+                        movie.setOverview( db.getOverview() );
+                        movie.setBackdrop_path( db.getBackdrop_path() );
+                        movie.setPoster_path( db.getPoster_path() );
+                        movie.setRelease_date( db.getRelease_date() );
+                        movie.setVote_count( db.getVote_count() );
+                        movie.setVote_average( db.getVote_average() );
+                        movieArrayList.add( movie );
+                    }
+                    realm.commitTransaction();
+                    movieMethod();
+                } else {
+                    Toast.makeText( getActivity(), "Your Data Base Is Empty", Toast.LENGTH_LONG ).show();
+                }
+            }
         }
         return super.onOptionsItemSelected( item );
     }
@@ -125,7 +152,7 @@ public class FragmentForActivity extends Fragment implements ICallBack<Movie> {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View viewRoot = inflater.inflate( R.layout.fragment_grid, container, false );
+        View viewRoot = inflater.inflate( R.layout.fragment_grid, null );
         mGridView = (GridView) viewRoot.findViewById( R.id.gridInFragement );
         movieMethod();
 
@@ -144,38 +171,43 @@ public class FragmentForActivity extends Fragment implements ICallBack<Movie> {
         return viewRoot;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        realm = RealmControllers.with( this ).getRealm();
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        realm = RealmControllers.with( this ).getRealm();
+//
+//    }
 
-    }
+//    public void getAllMovies() {
+//        int i = 0;
+//        realm = Realm.getDefaultInstance();
+//        findData = realm.where( MovieDb.class ).findAll();
+//        //movieArrayList = new ArrayList( findData );
+//        for (MovieDb movieDb : hasnene) {
+//            movieArrayList.get( i ).;
+//            i++;
+//        }
+//        movieMethod();
+//
+//    }
 
-    public void getAllMovies() {
-        realm = Realm.getDefaultInstance();
-        findData = realm.where( MovieDb.class ).findAll();
-        movieArrayList = new ArrayList( findData );
-        movieMethod();
-
-    }
-
-    public void putDataInRealm(ArrayList<MovieDb> resultObj) {
-        realm = Realm.getInstance( getActivity() );
-        realm.beginTransaction();
-        for (MovieDb item : resultObj) {
-            movieDb = new MovieDb();
-            movieDb.setId( item.getId() );
-            movieDb.setOriginal_title( item.getOriginal_title() );
-            movieDb.setRelease_date( item.getRelease_date() );
-            movieDb.setOverview( item.getOverview() );
-            movieDb.setVote_average( item.getVote_average() );
-            movieDb.setVote_count( item.getVote_count() );
-            movieDb.setBackdrop_path( item.getBackdrop_path() );
-            realm.copyToRealmOrUpdate( movieDb );
-        }
-        realm.commitTransaction();
-        Log.i( "allmydata", String.valueOf( mydata ) );
-    }
+//    public void putDataInRealm(ArrayList<Movie> resultObj) {
+//        realm = Realm.getInstance( getActivity() );
+//        realm.beginTransaction();
+//        for (Movie item : resultObj) {
+//            movieDb = new MovieDb();
+//            movieDb.setId( item.getId() );
+//            movieDb.setOriginal_title( item.getOriginal_title() );
+//            movieDb.setRelease_date( item.getRelease_date() );
+//            movieDb.setOverview( item.getOverview() );
+//            movieDb.setVote_average( item.getVote_average() );
+//            movieDb.setVote_count( item.getVote_count() );
+//            movieDb.setBackdrop_path( item.getBackdrop_path() );
+//            realm.copyToRealmOrUpdate( movieDb );
+//        }
+//        realm.commitTransaction();
+//        Log.i( "allmydata", String.valueOf( mydata ) );
+//    }
 
 
     @Override
